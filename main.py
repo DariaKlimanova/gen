@@ -36,7 +36,7 @@ def miller(p): # алгоритм Рабина-Миллера
     while m % 2 == 0:
         b, m = b + 1, m / 2 # ищем b через наибольшее число делений (p-1) на 2
     for i in range(5): # повторить 5 раз
-        a = randint(1, p - 1)
+        a = randint(1, p - 1) #рандомное число а от 1 до p-1
         z = pow(int(a), int(m), p)  # z = a^m mod p
         if z == 1 or z == p - 1:
             continue  # p может быть простым
@@ -53,9 +53,9 @@ def miller(p): # алгоритм Рабина-Миллера
 
 p = proverka()
 while True:
-    # print(p, miller(p))
-    if miller(p) == 'False':
-        p = proverka()
+    # print(p, miller(p)) так можно посмотреть процесс проверок чисел
+    if miller(p) == 'False': #если тест Миллера вернул False, 
+        p = proverka() #заново запускаем функцию проверки на деление с генерацией числа и так до тех пор, пока не получим True
     else:
         break
 print("Сгенерированное число: "+str(p)+'\n'+'Результат проверки:', miller(p))
